@@ -1,27 +1,45 @@
-#container {
-  text-align: center;
+img {
+    //Tamaño
+    height: 250px;
+    width: 250px;
+    //Redonda
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    background-size: 100% auto;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+    //borde y margenes
+    border: white 3px solid;
+    margin-top: 5%;
+    margin-bottom: 10%;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+ion-card{
+    width: 100%;
+     height: 100%; 
+     border-radius: 1pc;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+#nombre{
+    font-size: 2pc; 
+    color: whitesmoke; 
 }
 
-#container a {
-  text-decoration: none;
+#location{
+    font-size: 1pc; 
+    color: grey; 
+    margin-bottom: 4%;
+}
+
+#info{
+    text-align: left; 
+    margin-left: 5%; 
+}
+
+#interests{
+    padding: 3%; 
+    margin: 5px ;  
+    color: white; 
+    border-radius: 1pc; 
+    font-size:1pc;
 }

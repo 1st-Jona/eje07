@@ -1,20 +1,62 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Users
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+    <ion-item>
+        <ion-label position="floating">Buscar</ion-label>
+        <ion-input type="text" [(ngModel)]="search" (keyup)="filter()"></ion-input>
+    </ion-item>
+    <ion-slides pager=" true " style="padding: 5%;" *ngIf="users.length>0">
+        <ion-slide *ngFor=" let user of users; index as i ">
+            <ion-card>
+                <img src={{user.image}}>
+                <div id="info">
+                    <h1 id="nombre"><strong>{{user.name}}</strong></h1>
+                    <h1 id="location">{{user.location}}</h1>
+                    <ion-row>
+                        <div style="margin-right: 5%; height: 30%; " *ngIf="user.loveCount>0">
+                            <ion-fab-button color="danger " (click)="addLove(i) "> {{user.loveCount}}
+                            </ion-fab-button>
+                            <ion-icon name="heart"></ion-icon>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+                        </div>
+                        <div *ngIf="user.likeCount>0">
+                            <ion-fab-button color="primary " (click)="addLike(i)">
+                                {{user.likeCount}}
+                            </ion-fab-button>
+                            <ion-icon name="thumbs-up"></ion-icon>
+                        </div>
+                    </ion-row>
+                </div>
+                <div style="width: 80%; padding: 5%; ">
+                    <ion-row>
+                        <div *ngFor="let item of user.interest; index as j " id="interests" style="background-color: {{item.color}}">
+                            {{item.description}}
+                        </div>
+                    </ion-row>
+                </div>
+            </ion-card>
+            <ion-fab vertical="bottom " horizontal="end " slot="fixed ">
+                <ion-fab-button color="dark">
+                    <ion-icon name="arrow-up-circle"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-list side="top">
+                    <ion-fab-button color="danger " (click)="addLove(i) ">
+                        <ion-icon name="heart"></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-button color="primary " (click)="addLike(i) ">
+                        <ion-icon name="thumbs-up"></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-button color="warning" (click)=showAlert(i);>
+                        <ion-icon name="trash-outline"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab-list>
+            </ion-fab>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
