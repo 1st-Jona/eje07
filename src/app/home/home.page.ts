@@ -39,7 +39,14 @@ export class HomePage {
       message: '¿Seguro que deseas eliminar a este usuario?',
       buttons: [{text: 'No'},
       {text: 'Sí', handler: () => {
-          this.userService.deleteUser(pos);
+        const nameTemp = this.users[pos].name;
+        this.getAll();
+        for (let i = 0;  i < this.users.length; i++){
+            if (nameTemp === this.users[i].name){
+              this.userService.deleteUser(i);
+              this.filter();
+            }
+          }
         }
       }]
     });
